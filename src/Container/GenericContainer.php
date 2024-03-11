@@ -14,6 +14,7 @@ use ReflectionUnionType;
 use function Tempest\attribute;
 use Tempest\Container\Exceptions\CannotAutowireException;
 use Tempest\Container\Exceptions\CannotInstantiateDependencyException;
+use Tempest\Support\Reflection\Types;
 use Throwable;
 
 final class GenericContainer implements Container
