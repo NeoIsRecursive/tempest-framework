@@ -9,7 +9,6 @@ use Tempest\Http\Session\Session;
 use Tempest\Validation\SkipValidation;
 
 use function Tempest\get;
-use function Tempest\Support\Arr\every;
 use function Tempest\Support\Arr\get_by_key;
 use function Tempest\Support\Arr\has_key;
 use function Tempest\Support\str;
@@ -139,7 +138,11 @@ trait IsRequest
 
     public function accepts(ContentType ...$contentTypes): bool
     {
-        $header = $this->headers->get(name: 'accept') ?? '';
+        $header = $this->headers->get(name: 'accept') ?? implode(separator: ',', array: [
+            ContentType::HTML->value,
+            ContentType::XHTML->value,
+            ContentType::XML->value,
+        ]);
 
         /** @var array{mediaType:string,subType:string} */
         $mediaTypes = [];

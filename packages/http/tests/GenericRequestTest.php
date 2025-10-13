@@ -85,9 +85,9 @@ final class GenericRequestTest extends TestCase
             uri: '/',
         );
 
-        $this->assertTrue($request->accepts(ContentType::JSON));
+        $this->assertFalse($request->accepts(ContentType::JSON));
         $this->assertTrue($request->accepts(ContentType::HTML));
-        $this->assertTrue($request->accepts(ContentType::XML));
+        $this->assertFalse($request->accepts(ContentType::XML));
     }
 
     public function test_accepts_with_empty_accept_header(): void
